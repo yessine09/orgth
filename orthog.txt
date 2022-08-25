@@ -1,0 +1,63 @@
+Program orth;
+
+Type
+   tab =  Array[1..10] Of Integer;
+Var
+   t1,t2:  tab;
+   ps,n:  Integer;
+
+Procedure saisir (Var n:Integer);
+Begin
+   Repeat
+      write('n= ');
+      Readln(n);
+   Until (n=10);
+End;
+
+Procedure remplir(Var t:tab; n:Integer);
+Var
+   i:  Integer;
+Begin
+   For i:=1 To n Do
+      Begin
+         write('donner élement nuM ',i,'= ');
+         Readln(t[i]);
+      End;
+End;
+
+
+procedure pairs(var nombre);
+    write ("un nombre");
+    read (nombre);
+    if (nombre=2*n) then 
+write ("c'est un nombre paire")
+    else
+ if (nombre =2*(n+1)) alors 
+write ("c'est un nombre impaire");
+    endif
+
+end;
+
+Function calculer_ps(T1:tab;T2:tab;n:Integer):  Integer;
+Var
+   ps,i:  Integer;
+Begin
+   ps := 0;
+   For i:=1 To n Do
+      ps := ps+T1[i]*T2[i];
+   calculer_ps := ps;
+End;
+
+Procedure afficher_dec(ps:Integer);
+Begin
+   If ps=0 Then Writeln('T1 et T2 sont orthogonaux')
+   Else Writeln('T1 et T2 ne sont pas orthogonaux');
+End;
+Begin
+   saisir(n);
+   remplir(t1,n);
+   remplir(t2,n);
+   ps := calculer_ps(t1,t2,n);
+   Writeln('Le produit scalaire est',ps);
+   afficher_dec(ps);
+End.
